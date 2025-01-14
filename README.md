@@ -28,10 +28,10 @@ Or by passing it as a query param to the [content API](https://www.builder.io/c/
 
 Once you install the plugin, you will also be able to use the Medusa types as inputs for your components, such as:
 
-- `b` when used as an input type, you will be able to search and select a specific Product to provide to your component and consume the product data however you want from inside the component.
-- `b` when used as an input type, you will be able to search and select a specific category of products to provide to your component, as example you can fetch products from a specific category from inside your component.
-- `b` when used as an input type, it enables users to select multiple products to provide to your component. As an example you can select multiple products and display them on a grid.
-- `b` when used as an input type enables users to select multiple categories to provide to your component.
+- ***MedusaProduct*** when used as an input type, you will be able to search and select a specific Product to provide to your component and consume the product data however you want from inside the component.
+- ***MedusaCategory*** when used as an input type, you will be able to search and select a specific category of products to provide to your component, as example you can fetch products from a specific category from inside your component.
+- ***MedusaProductList*** when used as an input type, it enables users to select multiple products to provide to your component. As an example you can select multiple products and display them on a grid.
+- ***MedusaCategoryList*** when used as an input type enables users to select multiple categories to provide to your component.
 
 #### Example of a Custom Component with SFCommerceProduct input type:
 
