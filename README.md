@@ -60,6 +60,18 @@ export const inputData = {
       type: "MedusaProductsList",
     },
     {
+      name: "medusaCollection",
+      type: "MedusaCollection",
+    },
+    {
+      name: "medusaCollectionHandle",
+      type: "MedusaCollectionHandle",
+    },
+    {
+      name: "medusaCollectionList",
+      type: "MedusaCollectionsList",
+    },
+    {
       name: "medusaCategory",
       type: "MedusaCategory",
     },
