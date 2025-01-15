@@ -9,6 +9,13 @@ export const transformProduct = ((resource: any) => ({
     }),
 }))
 
+export const transformCollection = ((resource: any) => ({
+    image: {
+        src: 'https://avatars.githubusercontent.com/u/62591822',
+    },
+    ...resource,
+}))
+
 export const transformCategory = ((resource: any) => ({
     title: resource.name,
     image: {

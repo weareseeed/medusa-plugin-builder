@@ -1,7 +1,7 @@
 import pkg from '../package.json'
 import { registerCommercePlugin } from '@builder.io/commerce-plugin-tools';
 import { MedusaClient } from './medusa';
-import { transformCategory, transformProduct } from './utils';
+import { transformCategory, transformCollection, transformProduct } from './utils';
 
 registerCommercePlugin(
     {
@@ -62,6 +62,36 @@ registerCommercePlugin(
                         },
                         options:{
                             product:id
+                        }
+                    }
+                },
+            },
+            collection: {
+                async findById(id: string) {
+                    return await medusaClient.getCollection(id)
+                },
+                async findByHandle(handle: string) {
+                    const response = await medusaClient.getCollectionsList({handle})
+                    return transformCollection(response.find(Boolean)) 
+                },
+                async search(search: string) {
+                    return await medusaClient.getCollectionsList({
+                        q: search
+                    })
+                },
+                getRequestObject(id: string) {
+                    return {
+                        "@type": "@builder.io/core:Request" as const,
+                        request: {
+                            url: `${baseUrl}/store/collections/${id}`,
+                            headers: {
+                                "Content-Type": "application/json",
+                                Accept: "application/json; charset=utf-8",
+                                "x-publishable-api-key": publishableKey,
+                            },
+                        },
+                        options:{
+                            collection:id
                         }
                     }
                 },

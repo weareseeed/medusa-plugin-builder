@@ -1,13 +1,13 @@
 import Medusa from "@medusajs/js-sdk"
 import {
     StoreProductListParams,
-    StoreProductResponse,
     StoreProductCategoryListParams,
     FindParams,
     StoreProductCategory,
     StoreProduct,
+    StoreCollection,
 } from "@medusajs/types"
-import { transformCategory, transformProduct } from "./utils"
+import { transformCategory, transformCollection, transformProduct } from "./utils"
 
 
 type MedusaConfig = {
@@ -39,9 +39,22 @@ export class MedusaClient {
         return response.products.map(transformProduct)
     }
 
-    async getProduct(id: string): Promise<StoreProductResponse['product']> {
+    async getProduct(id: string): Promise<StoreProduct> {
         const response = await this.medusaSdk.store.product.retrieve(id)
         return transformProduct(response.product)
+    }
+
+    async getCollectionsList(query?: StoreProductListParams): Promise<StoreCollection[]> {
+        const response = await this.medusaSdk.store.collection.list({
+            limit: 20,
+            ...query
+        })
+        return response.collections.map(transformCollection)
+    }
+
+    async getCollection(id: string): Promise<StoreCollection> {
+        const response = await this.medusaSdk.store.collection.retrieve(id)
+        return transformCollection(response.collection)
     }
 
     async getCategoriesList(query?: FindParams & StoreProductCategoryListParams): Promise<CustomStoreProductCategory[]> {
