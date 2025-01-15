@@ -1,6 +1,7 @@
 import pkg from '../package.json'
 import { registerCommercePlugin } from '@builder.io/commerce-plugin-tools';
 import { MedusaClient } from './medusa';
+import { transformCategory, transformProduct } from './utils';
 
 registerCommercePlugin(
     {
@@ -39,6 +40,10 @@ registerCommercePlugin(
                 async findById(id: string) {
                     return await medusaClient.getProduct(id)
                 },
+                async findByHandle(handle: string) {
+                    const response = await medusaClient.getProductsList({handle})
+                    return transformProduct(response.find(Boolean)) 
+                },
                 async search(search: string) {
                     return await medusaClient.getProductsList({
                         q: search
@@ -64,6 +69,10 @@ registerCommercePlugin(
             category: {
                 async findById(id: string) {
                     return await medusaClient.getCategory(id)
+                },
+                async findByHandle(handle: string) {
+                    const response = await medusaClient.getCategoriesList({handle})
+                    return transformCategory(response.find(Boolean)) 
                 },
                 async search(search: string) {
                     return await medusaClient.getCategoriesList({
