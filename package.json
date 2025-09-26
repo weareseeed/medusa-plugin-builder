@@ -1,6 +1,6 @@
 {
-  "name": "@medusa/plugin-builder",
-  "version": "1.0.0",
+  "name": "@weareseeed/medusa-plugin-builder",
+  "version": "1.1.0",
   "entry": "plugin",
   "output": "plugin.system.js",
   "main": "dist/plugin.system.js",
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open --hot"
+    "start": "webpack-dev-server --mode development"
   },
   "keywords": [],
   "author": "Javier Castillo <jgomez@seeed.us>",
@@ -20,8 +20,8 @@
     "@builder.io/commerce-plugin-tools": "^0.3.0",
     "@builder.io/data-plugin-tools": "^0.0.4",
     "@builder.io/plugin-tools": "^0.0.6",
-    "@medusajs/js-sdk": "^2.2.0",
-    "@medusajs/types": "^2.2.0",
+    "@medusajs/js-sdk": "^2.10.0",
+    "@medusajs/types": "^2.10.0",
     "express": "^4.21.2"
   },
   "devDependencies": {
